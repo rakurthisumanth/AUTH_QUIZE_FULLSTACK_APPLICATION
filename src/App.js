@@ -2,6 +2,7 @@ import React,{useState,useContext, createContext} from 'react'
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import Login from './components/Login'
 import MyProfile from './components/MyProfile'
+import NavBar from './components/NavBar'
 import NavigationBar from './components/NavigationBar'
 import Register from './components/Register'
 
@@ -12,7 +13,7 @@ function App() {
     <div>
       <store.Provider value={[token,settoken]} >
       <Router>
-      <NavigationBar/>
+      <NavBar/>
       <Routes>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>
@@ -20,7 +21,8 @@ function App() {
       </Routes>
     </Router>
       </store.Provider>
-      
+    
+ 
 
     </div>
    

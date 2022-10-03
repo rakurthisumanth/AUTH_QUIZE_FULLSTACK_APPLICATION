@@ -14,11 +14,9 @@ function NavigationBar() {
     </div>
 }
 
-   
-
+  
     </div>
-      
-      
+       
   
   )
 }

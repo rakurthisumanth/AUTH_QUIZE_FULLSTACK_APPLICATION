@@ -3,6 +3,9 @@ import axios from 'axios'
 import { store } from '../App'
 import MyProfile from './MyProfile'
 import {Navigate} from "react-router-dom"
+import img2 from "../images/img2.jpg"
+import img3 from "../images/img3.jpg"
+import { Paper, TextField } from '@mui/material'
 
 function Login() {
 
@@ -27,19 +30,23 @@ function Login() {
     }
     if(token){
       return <Navigate to="/profile"/>
-
     }
-
- 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${img2})`,backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',width: '100vw',height: '100vh'}}>
         <center>
+        <br/><br/><br/><br/><br/>
+
+        <Paper style={{height:"60vh",width:"50vh",backgroundImage: `url(${img3})`,backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}} >
         <form onSubmit={SubmitHandler} autoComplete="off">
-            <h3>login</h3>
-            <input type="text" onChange={ChangeHandler}  name='email' placeholder='email'/><br/>
-            <input type="password"onChange={ChangeHandler}  name='password' placeholder='password'/><br/>
-             <input type="submit" value="login"/>
+        <br/><br/><br/>
+
+        <h3 style={{color:"blue"}}>Login</h3>   
+        <TextField id="outlined-basic" size="small" label="UserName" variant="outlined"type="text" onChange={ChangeHandler}  name='email' placeholder='email' /><br/><br/>
+        <TextField id="outlined-basic" size="small" label="UserName" variant="outlined"type="password"onChange={ChangeHandler}  name='password' placeholder='password' /><br/><br/>
+
+        <TextField style={{color:"blue",backgroundColor:"orange"}} size="small"  type="submit" value="login"/>
         </form>
+        </Paper>
         </center>
         
     </div>

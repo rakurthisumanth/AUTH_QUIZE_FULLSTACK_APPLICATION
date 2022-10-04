@@ -9,9 +9,10 @@ import Register from './components/Register'
 export const store= createContext()
 function App() {
   const [token,settoken]=useState(null)
+  const [mydata,setmydata]=useState(null)
   return (
     <div>
-      <store.Provider value={[token,settoken]} >
+      <store.Provider value={[token,settoken,mydata,setmydata]} >
       <Router>
       <NavBar/>
       <Routes>

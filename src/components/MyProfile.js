@@ -3,17 +3,20 @@ import React,{useState,useContext,useEffect} from 'react'
 import { store } from '../App'
 import Login from './Login'
 import {Navigate, navigate} from "react-router-dom"
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import { Button, IconButton, Toolbar } from '@mui/material';
 
 function MyProfile() {
     const [token,settoken]=useContext(store)
-    const [data,settdata]=useState(null)
+    const [mydata,setmydata]=useContext(store)
     useEffect(()=>{
         axios.get("https://authanticaion-nodejs.herokuapp.com/start/profile",{
             headers:{
                 'x-token':token
             }
         }).then((res)=>{
-            settdata(res.data)
+            setmydata(res.data)
         }).catch((err)=>{
             console.log(err)
         })
@@ -23,15 +26,7 @@ function MyProfile() {
     }
   return (
     <div> 
-        {
-            data && 
-            <center>
-     <h1>Welcome To DasBoard:{data.username}</h1>  
-
-      <button onClick={()=>settoken(null)}>  Logout</button>
-            </center>
-          
-        }
+    
    
      
 

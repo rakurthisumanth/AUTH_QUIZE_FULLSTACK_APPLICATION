@@ -2,34 +2,47 @@ import React,{useState,useContext} from 'react'
 import axios from 'axios'
 import { store } from '../App'
 import MyProfile from './MyProfile'
-import {Navigate} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import img2 from "../images/img2.jpg"
 import img3 from "../images/img3.jpg"
 import { Paper, TextField } from '@mui/material'
+import 'react-toastify/dist/ReactToastify.css'
+import {toast, Toast,ToastContainer} from "react-toastify"
 
 function Login() {
 
+   const Alert=()=>{
+    toast.success("LoginSucess",{
+      position:"top-center"
+    })
+  
+
+   }
     const [token,settoken]=useContext(store)
     const [data,setdata]=useState({
-   
         email:"",
-        password:""
-        
+        password:""   
     })
-
     const ChangeHandler=(e)=>{
         setdata({...data,[e.target.name]:e.target.value})
-
     }
-
     const SubmitHandler=(e)=>{
         e.preventDefault();
+        
         axios.post('https://authanticaion-nodejs.herokuapp.com/start/login',data).then((res)=>{
+          Alert()
             settoken(res.data.token )
+          
+        },)
+        .catch((err)=>{
+          toast.error("Incoreccort Mail/Password",{
+            position:"top-center"
+          })
         })
     }
     if(token){
       return <Navigate to="/profile"/>
+
     }
   return (
     <div style={{ backgroundImage: `url(${img2})`,backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',width: '100vw',height: '100vh'}}>
@@ -46,6 +59,10 @@ function Login() {
 
         <TextField style={{color:"blue",backgroundColor:"orange"}} size="small"  type="submit" value="login"/>
         </form>
+        <br/>
+        <ToastContainer/>
+        <br/>
+        <p>Did't have Account <Link to="/Register">Register</Link></p>
         </Paper>
         </center>
         

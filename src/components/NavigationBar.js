@@ -14,7 +14,6 @@ function NavigationBar() {
     </div>
 }
 
-  
     </div>
        
   

@@ -6,6 +6,7 @@ import {Navigate, navigate} from "react-router-dom"
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import { Button, IconButton, Toolbar } from '@mui/material';
+import MyProfileData from './myprofileData'
 
 function MyProfile() {
     const [token,settoken]=useContext(store)
@@ -26,9 +27,8 @@ function MyProfile() {
     }
   return (
     <div> 
-    
-   
-     
+
+    <MyProfileData/>
 
     </div>
   )
